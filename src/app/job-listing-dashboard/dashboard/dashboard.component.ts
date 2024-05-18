@@ -2,16 +2,19 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { JobDetails } from './job-details.model';
 import { JobDetailsComponent } from './job-details/job-details.component';
+import { ChangeColorDirective } from '../change-color.directive';
+import { ExponentialStrengthPipe } from '../exponential-strength.pipe';
+import { LoggerService } from '../logger.service';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, JobDetailsComponent],
+  imports: [CommonModule, JobDetailsComponent, ChangeColorDirective, ExponentialStrengthPipe],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent {
-  selectedJob: JobDetails = {};
+  selectedJob: any = {};
 
   jobs: JobDetails[] = [
     {
@@ -22,6 +25,7 @@ export class DashboardComponent {
       location: 'Various (depends on company)',
       description:
         'Software engineers design, develop, and maintain software applications. They work on creating user-friendly interfaces, writing code, debugging, and testing software systems.',
+      applied: false,
     },
     {
       id: 2,
@@ -32,6 +36,7 @@ export class DashboardComponent {
       location: 'Hospitals, clinics, nursing homes, etc.',
       description:
         'Registered nurses provide patient care in various healthcare settings. They assess patient health needs, develop care plans, administer medications, and educate patients and their families about health conditions.',
+      applied: false,
     },
     {
       id: 3,
@@ -41,6 +46,7 @@ export class DashboardComponent {
       location: 'Office-based, may require travel',
       description:
         'Marketing managers oversee marketing campaigns and strategies to promote products or services. They analyze market trends, coordinate with advertising agencies, and collaborate with sales teams to maximize brand awareness and sales.',
+      applied: false,
     },
     {
       id: 4,
@@ -51,14 +57,29 @@ export class DashboardComponent {
         'Construction sites, residential buildings, commercial buildings',
       description:
         'Electricians install, maintain, and repair electrical systems in various settings. They interpret blueprints, inspect electrical components, and ensure compliance with electrical codes and regulations to ensure safety and functionality.',
+      applied: false,
     },
   ];
 
+  constructor(private loggerService: LoggerService){}
+
   select(job: JobDetails) {
+    this.loggerService.log(this.selectedJob.title);
+
     this.selectedJob = job;
   }
 
   applied(event: JobDetails) {
-    console.log(event);
+    this.jobs.forEach((job) => {
+      if (job.id === event.id) {
+        job.applied = true;
+      } else {
+        job.applied = false;
+      }
+    });
+
+
+    console.log(this.jobs);
+
   }
 }

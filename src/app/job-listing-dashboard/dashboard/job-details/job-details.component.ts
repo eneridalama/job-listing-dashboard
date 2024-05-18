@@ -10,10 +10,10 @@ import { CommonModule } from '@angular/common';
   styleUrl: './job-details.component.scss',
 })
 export class JobDetailsComponent {
-  @Input() job: JobDetails = {};
+  @Input() job: JobDetails = { id: 0 };
   @Output() applied: EventEmitter<JobDetails> = new EventEmitter();
 
-  apply(){
+  apply() {
     this.applied.emit(this.job);
   }
 }

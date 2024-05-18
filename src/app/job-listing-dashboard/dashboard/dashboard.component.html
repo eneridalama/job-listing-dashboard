@@ -12,9 +12,9 @@
     <tbody>
       <tr *ngFor="let job of jobs">
         <th scope="row">{{job.id}}</th>
-        <td>{{job.title}}</td>
-        <td>{{job.salary}}</td>
-        <td>{{job.experience}}</td>
+        <td [ngClass]="{highlighted: job.applied}">{{job.title}}</td>
+        <td >{{job.salary}}</td>
+        <td appChangeColor>{{job.experience}}</td>
         <td>{{job.location}}</td>
         <td><button class="btn btn-primary" (click)="select(job)">Select</button></td>
       </tr>

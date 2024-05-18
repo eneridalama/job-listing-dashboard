@@ -1,8 +1,9 @@
 export interface JobDetails {
-  id?: number;
+  id: number;
   title?: string;
   salary?: string;
   experience?: string;
   location?: string;
   description?: string;
+  applied?: boolean;
 }
