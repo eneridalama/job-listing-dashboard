@@ -23,4 +23,14 @@
 </div>
 
 
+<button class="btn btn-primary" (click)="addJob()">Add Job</button>
+
+<button class="btn btn-primary" (click)="editJob()">Edit Job</button>
+
+<button class="btn btn-primary" (click)="deleteJob()">Delete Job</button>
+
+
+
+
+
 <app-job-details [job]="selectedJob" (applied)="applied($event)"></app-job-details>
