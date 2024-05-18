@@ -1,0 +1,26 @@
+<div class="container mt-5">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Job Title</th>
+        <th scope="col">Salary Range</th>
+        <th scope="col">Experience Required</th>
+        <th scope="col">Location</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let job of jobs">
+        <th scope="row">{{job.id}}</th>
+        <td>{{job.title}}</td>
+        <td>{{job.salary}}</td>
+        <td>{{job.experience}}</td>
+        <td>{{job.location}}</td>
+        <td><button class="btn btn-primary" (click)="select(job)">Select</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<app-job-details [job]="selectedJob" (applied)="applied($event)"></app-job-details>

@@ -1,0 +1,15 @@
+.wrapper {
+  margin-top: 20px;
+  width: 700px;
+  background-color: var(--surface-ground);
+  padding: 50px;
+  border-radius: 10px;
+  .login-card {
+    margin: auto;
+    width: 37.5em;
+    border-radius: 10px;
+    button {
+      width: 100%;
+    }
+  }
+}
